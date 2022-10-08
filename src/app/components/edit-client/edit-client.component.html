@@ -1,0 +1,109 @@
+<div class="row m-3">
+    <div class="col-md-12"><a routerLink="/"><i class="fa fa-arrow-circle-left"></i>Back to dashboard</a></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            
+            <div class="card-body">
+                <h4 class="card-title"><i class="fa fa-user">Edit Client</i></h4>
+        <form #f="ngForm" (ngSubmit)="UpdateClient()">
+            <div class="form-group">
+                <label for="">First Name</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                #firstName="ngModel" 
+                name="firstName" 
+                [(ngModel)]="client.firstName" 
+                required
+                minlength="3"
+                [ngClass]="{'is-invalid': firstName.errors && firstName.touched}"
+                >
+                <div [hidden]="!firstName.errors?.['required']" class="invalid-feedback">
+                    First Name is required
+                </div>
+                <div [hidden]="!firstName.errors?.['minlength']" class="invalid-feedback">
+                    First Name is greater than 3
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">last Name</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                #lastName="ngModel" 
+                name="lastName" 
+                [(ngModel)]="client.lastName" 
+                required
+                minlength="3"
+                [ngClass]="{'is-invalid': lastName.errors && lastName.touched}"
+                >
+                <div [hidden]="!lastName.errors?.['required']" class="invalid-feedback">
+                    last Name is required
+                </div>
+                <div [hidden]="!lastName.errors?.['minlength']" class="invalid-feedback">
+                    last Name is greater than 3
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                #email="ngModel" 
+                name="email" 
+                [(ngModel)]="client.email" 
+                required
+                minlength="3"
+                [ngClass]="{'is-invalid': email.errors && email.touched}"
+                >
+                <div [hidden]="!email.errors?.['required']" class="invalid-feedback">
+                    Email is required
+                </div>
+                <div [hidden]="!email.errors?.['minlength']" class="invalid-feedback">
+                    Email is greater than 3
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">phone</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                #phone="ngModel" 
+                name="phone" 
+                [(ngModel)]="client.phone" 
+                required
+                pattern="[0-9]{10}"
+           
+                [ngClass]="{'is-invalid': phone.errors && phone.touched}"
+                >
+                <div [hidden]="!phone.errors?.['required']" class="invalid-feedback">
+                    phone is required
+                </div>
+                <div [hidden]="!phone.errors?.['pattern']" class="invalid-feedback">
+                    phone must countain exactly 10 characters
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Balance</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                #balance="ngModel" 
+                name="balance" 
+                [(ngModel)]="client.balance" 
+                required
+                [ngClass]="{'is-invalid': balance.errors && balance.touched}"
+                >
+                <div [hidden]="!balance.errors?.['required']" class="invalid-feedback">
+                    balance is required
+                </div>
+                
+            </div>
+            <button type="submit" [disabled]="!f.valid" class="btn btn-warning">Edit client</button>
+        </form>
+            </div>
+        </div>
+    </div>
+</div>

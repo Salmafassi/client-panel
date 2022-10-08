@@ -1,0 +1,40 @@
+<div class="row m-3" >
+    <div class="col-md-6">
+        <a routerLink="/"><i class="fa fa-arrow-circle-left"></i>Go to dashboard</a>
+    </div>
+    <div class="col-md-6">
+        <div class="btn-group pull-right">
+            <button class="btn btn-danger" routerLink="/client/edit/{{id}}">Editer</button>
+            <button class="btn btn-dark" (click)="Delete()">Delete</button>
+        </div>
+    </div>
+</div>
+<div class="card">
+    
+    <div class="card-body">
+        <h4 class="card-title">{{Client.firstName}}</h4>
+       <div class="row">
+        <div class="col-md-8">
+            <ul class="list-group">
+                <li class="list-group-item">phone : <strong>{{Client.phone}}</strong></li>
+                <li class="list-group-item">Email: <strong>{{Client.email}}</strong></li>
+                <li class="list-group-item">Disabled item</li>
+            </ul>
+        </div>
+        <div class="col-md-4 text-right">
+            balance <button class="btn btn-success" (click)="showbalance=!showbalance"><i class="fa fa-pencil"></i></button>
+            <h4 [ngClass]="{'text-danger':showbalance,'text-success':!showbalance}">{{Client.balance | currency:'USD'}}</h4>
+            <div *ngIf="showbalance">
+                <form >
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="balance" [(ngModel)]="Client.balance">
+                        <div class="btn-group">
+                            <div class="btn btn-warning" (click)="onSubmit()" type="submit">Update</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>
